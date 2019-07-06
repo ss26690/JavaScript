@@ -1,0 +1,128 @@
+class Node{
+  constructor(element){
+    this.element = element;
+    this.next = null;
+  }
+}
+
+class LinkedList{
+  constructor(){
+    this.head = null;
+    this.size = 0;
+  }
+  add(element){
+    var node= new Node(element);
+    var current;
+    if(this.head==null)
+       this.head = node;
+    else{
+      current = this.head;
+      while(current.next){
+        current = current.next;
+      }
+      current.next = node;
+    }
+    this.size++;
+  }
+  
+  printList(){
+    var curr = this.head;
+    var str = "";
+    while(curr){
+      str += curr.element + " ";
+      curr = curr.next;
+    }
+    document.write(str);
+  }
+}
+
+class instructor{
+  constructor(){
+    this.l1 = new LinkedList();
+    var instruction = "";
+    document.write(instruction);
+    
+    var main_option = prompt(`Selection operation perform :
+      1. Insert 
+      2. Delete 
+      3. Display
+      Enter your choice : `);
+      //alert(main_option);
+    
+    if(main_option<4 && main_option>0){
+      switch(main_option){
+        case "1" : this.insert_operation();
+                break;
+        
+        case "2" : this.delete_operation();
+                break;
+        
+        case "3": this.l1.printList();
+                break;
+                
+        default : "invalid Option Selected";
+      }
+    }
+    else{
+      alert("Please Enter Correct Option");
+    }
+    
+  }
+  
+  delete_operation(){
+    var option = prompt(`Selection operation perform :
+        1. Delete at Begning
+        2. Delete at Specific Location
+        3. Delete at Last
+        Enter your choice :`);
+        if(option>0 && option<4){
+          switch(option){
+            case "1" : this.deleter(element);
+                       break;
+            case "2" : var index = prompt("Enter index of element where deleted : ");
+                       this.deleter(element,index);
+                       break;
+            case "3" : this.deleter(element);
+                       break;
+            default : "invalid Option Selected";
+          }
+        }
+        else{
+          alert("Please Enter Correct Option");
+        }
+  }
+  
+  insert_operation(){
+    var option = prompt(`Selection operation perform :
+        1. Insert at Begning
+        2. Insert at Specific Location
+        3. Insert at Last
+        Enter your choice : `);
+        var element = prompt("Enter Element to insert : ");
+        if(option>0 && option<4){
+          switch(option){
+            case "1" : this.inserter(element);
+                       break;
+            case "2" : var index = prompt("Enter index element where insert : ");
+                       this.inserter(element,index);
+                       break;
+            case "3" : this.inserter(element);
+                       break;
+            default : "invalid Option Selected";
+          }
+        }
+        else{
+          alert("Please Enter Correct Option");
+        }
+  }
+  
+  inserter(element,index){
+    alert(element+":"+index);
+  }
+  
+  deleter(element,index){
+    alert(element+":"+index);
+  }
+}
+
+new instructor();
